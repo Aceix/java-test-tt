@@ -45,7 +45,27 @@ public class MontrealTradedProductsTest extends TestCase {
     }
 
     public void testTrade() {
+        this.p1 = new Stock("AAPL", "101", "NASDAQ", this.mockService);
 
+        try {
+            this.trader.addNewProduct(p1);
+
+            // before trading
+            assertEquals(
+                    0,
+                    this.trader.totalTradeQuantityForDay()
+            );
+
+            this.trader.trade(p1, 2);
+
+            // after trading
+            assertEquals(
+                    2,
+                    this.trader.totalTradeQuantityForDay()
+            );
+        } catch (ProductAlreadyRegisteredException e) {
+            e.printStackTrace();
+        }
     }
 
     public void testTotalTradeQuantityForDay() {
@@ -69,5 +89,22 @@ public class MontrealTradedProductsTest extends TestCase {
     }
 
     public void testTotalValueOfDaysTradedProducts() {
+        this.p1 = new Stock("AAPL", "101", "NASDAQ", this.mockService);
+        this.p2 = new Future("GOOGL", "NASDAQ", "C-102", 12, 2022, this.mockService);
+
+        try {
+            this.trader.addNewProduct(p1);
+            this.trader.addNewProduct(p2);
+
+            this.trader.trade(p1, 2);
+            this.trader.trade(p2, 2);
+
+            assertEquals(
+                    12.0,
+                    this.trader.totalValueOfDaysTradedProducts()
+            );
+        } catch (ProductAlreadyRegisteredException e) {
+            e.printStackTrace();
+        }
     }
 }

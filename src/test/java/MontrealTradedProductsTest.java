@@ -1,15 +1,22 @@
 import junit.framework.TestCase;
+import org.mockito.Mockito;
 
 public class MontrealTradedProductsTest extends TestCase {
 
     private MontrealTradedProducts trader;
     private Product p1;
     private Product p2;
+    private final ProductPricingService mockService = Mockito.mock(ProductPricingService.class);
 
     public void setUp() throws Exception {
         super.setUp();
 
         this.trader = new MontrealTradedProducts();
+
+        Mockito.when(mockService.price(Mockito.anyString(), Mockito.anyString()))
+                .thenReturn(3.0);
+        Mockito.when(mockService.price(Mockito.anyString(), Mockito.anyString(), Mockito.anyInt(), Mockito.anyInt()))
+                .thenReturn(3.0);
     }
 
     public void testAddNewProductShouldSucceed() {

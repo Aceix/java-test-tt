@@ -2,7 +2,6 @@ public class Stock extends Product {
 
     private String ticker;
     private String exchange;
-    private ProductPricingService ps;
 
     public Stock() {}
 

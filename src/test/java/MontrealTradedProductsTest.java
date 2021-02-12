@@ -49,10 +49,15 @@ public class MontrealTradedProductsTest extends TestCase {
     }
 
     public void testTotalTradeQuantityForDay() {
-        this.p1 = new Stock();
-        this.p2 = new Future();
+        this.p1 = new Stock("AAPL", "101", "NASDAQ", this.mockService);
+        this.p2 = new Future("GOOGL", "NASDAQ", "C-102", 12, 2022);
 
-
+        try {
+            this.trader.addNewProduct(p1);
+            this.trader.addNewProduct(p2);
+        } catch (ProductAlreadyRegisteredException e) {
+            e.printStackTrace();
+        }
     }
 
     public void testTotalValueOfDaysTradedProducts() {

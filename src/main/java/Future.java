@@ -35,6 +35,21 @@ public class Future extends Product {
         this.year = year;
     }
 
+    public Future(
+            String id,
+            String exchange,
+            String contractCode,
+            int month,
+            int year,
+            ProductPricingService ps)
+    {
+        super(id, ps.price(exchange, contractCode, month, year));
+        this.exchange = exchange;
+        this.contractCode = contractCode;
+        this.month = month;
+        this.year = year;
+    }
+
     public String getExchange() {
         return exchange;
     }

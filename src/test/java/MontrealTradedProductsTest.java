@@ -38,9 +38,14 @@ public class MontrealTradedProductsTest extends TestCase {
     }
 
     public void testTrade() {
+
     }
 
     public void testTotalTradeQuantityForDay() {
+        this.p1 = new Stock();
+        this.p2 = new Future();
+
+
     }
 
     public void testTotalValueOfDaysTradedProducts() {

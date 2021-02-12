@@ -2,6 +2,7 @@ public class Stock extends Product {
 
     private String ticker;
     private String exchange;
+    private ProductPricingService ps;
 
     public Stock() {}
 
@@ -17,6 +18,13 @@ public class Stock extends Product {
 
     public Stock(String id, String ticker, String exchange) {
         super(id);
+
+        this.ticker = ticker;
+        this.exchange = exchange;
+    }
+
+    public Stock(String id, String ticker, String exchange, ProductPricingService ps) {
+        super(id, ps.price(exchange, ticker));
 
         this.ticker = ticker;
         this.exchange = exchange;

@@ -12,10 +12,10 @@ public abstract class Product {
         this.id = id;
     }
 
-//    public Product(String id, double value) {
-//        this.id = id;
-//        this.value = value;
-//    }
+    public Product(String id, double value) {
+        this.id = id;
+        this.value = value;
+    }
 
     public String getId() {
         return id;

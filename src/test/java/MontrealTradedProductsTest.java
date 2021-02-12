@@ -55,6 +55,14 @@ public class MontrealTradedProductsTest extends TestCase {
         try {
             this.trader.addNewProduct(p1);
             this.trader.addNewProduct(p2);
+
+            this.trader.trade(p1, 2);
+            this.trader.trade(p2, 2);
+
+            assertEquals(
+                    4,
+                    this.trader.totalTradeQuantityForDay()
+            );
         } catch (ProductAlreadyRegisteredException e) {
             e.printStackTrace();
         }
